@@ -1,0 +1,62 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 560px;
+
+  .mat-elevation-z2 {
+    @media screen and (max-width: 600px) {
+      box-shadow: none;
+    }
+  }
+
+  .card {
+    min-width: 150px;
+    max-width: 500px;
+    margin: 2em auto;
+
+    .mat-card-avatar {
+      height: 60px;
+      width: 60px;
+      order: 10;
+    }
+
+    .label {
+      color: gray;
+      font-size: 0.8em;
+    }
+
+    .powerstats {
+      display: block;
+    }
+
+    .mat-card-actions {
+      display: flex;
+      align-items: center;
+
+      .icon-l {
+        padding: 0 0 0 8px;
+      }
+
+      .icon-r {
+        padding: 0 8px 0 0;
+      }
+    }
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.mat-card-actions .mat-button:first-child {
+  margin: 0 8px;
+}

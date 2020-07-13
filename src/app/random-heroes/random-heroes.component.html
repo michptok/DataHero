@@ -1,0 +1,52 @@
+<div class="spinner wrapper" *ngIf="this.loadingCounter !== this.randomHeroesTotal">
+  <mat-progress-spinner color="accent" mode="indeterminate" diameter="50">
+  </mat-progress-spinner>
+</div>
+
+<div class="wrapper" *ngIf="this.loadingCounter === this.randomHeroesTotal">
+  <div class="refresh">
+    <button
+      mat-raised-button
+      (click)="reloadHeroes()"
+      matTooltip="Find more heroes"
+      matTooltipPosition="below"
+      color="accent"
+    >
+      <mat-icon class="icon-r">autorenew</mat-icon>
+      <span>GET RANDOM HEROES</span>
+    </button>
+  </div>
+
+  <div class="box">
+    <mat-card class="card mat-elevation-z4" *ngFor="let hero of heroes">
+      <img
+        class="hero-avatar"
+        [routerLink]="['/hero', hero.id]"
+        mat-card-image
+        src="{{ hero.image.url }}"
+        alt="avatar"
+        default="../../assets/images/image-not-provided.png"
+      />
+      <mat-card-content>
+        <div class="label">
+          ID
+        </div>
+        <p>{{ hero.id }}</p>
+        <div class="label">
+          NAME
+        </div>
+        <p>{{ hero.name }}</p>
+        <div class="label">
+          FULL NAME
+        </div>
+        <p>{{ hero.biography["full-name"] || "Not provided" }}</p>
+      </mat-card-content>
+      <span class="spacer"></span>
+      <mat-card-actions>
+        <button mat-button color="primary" [routerLink]="['/hero', hero.id]">
+          DETAILS
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

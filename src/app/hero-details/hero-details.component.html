@@ -1,0 +1,103 @@
+<div class="wrapper">
+  <mat-card class="card mat-elevation-z2" *ngIf="!isLoading">
+    <mat-card-header>
+      <!-- <mat-card-title-group> -->
+      <mat-card-title>{{ hero.name }}</mat-card-title>
+      <mat-card-subtitle> ID: {{ hero.id }} </mat-card-subtitle>
+      <span class="spacer"></span>
+      <a href="{{ hero.image.url }}">
+        <img
+          mat-card-avatar
+          src="{{ hero.image.url }}"
+          default="../../assets/images/avatar.png"
+          alt="avatar"
+        />
+      </a>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="label">
+        FULL NAME
+      </div>
+      <p>{{ hero.biography["full-name"] || "Not provided" }}</p>
+      <div class="label">
+        ALTER EGOS
+      </div>
+      <p>{{ hero.biography["alter-egos"] }}</p>
+      <div class="label">
+        GENDER
+      </div>
+      <p>{{ hero.appearance.gender }}</p>
+      <div class="label">
+        HEIGHT & WEIGHT
+      </div>
+      <p>{{ hero.appearance.height }}, {{ hero.appearance.weight }}</p>
+      <div class="label">
+        FIRST APPERANCE
+      </div>
+      <p>{{ hero.biography["first-appearance"] }}</p>
+      <div class="label">
+        OCCUPATION
+      </div>
+      <p>{{ hero.work.occupation }}</p>
+      <div class="label">
+        GROUP AFFILIATION
+      </div>
+      <p>{{ hero.connections["group-affiliation"] }}</p>
+      <div class="label">
+        POWERSTATS
+      </div>
+      <p>
+        <span class="powerstats">
+          Intelligence: {{ hero.powerstats.intelligence || "N/A" }}, Strength:
+          {{ hero.powerstats.strength || "N/A" }}, Speed:
+          {{ hero.powerstats.speed || "N/A" }},
+        </span>
+        <span class="powerstats">
+          Durability: {{ hero.powerstats.durability || "N/A" }}, Power:
+          {{ hero.powerstats.power || "N/A" }}, Combat:
+          {{ hero.powerstats.combat || "N/A" }}
+        </span>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-button
+        [routerLink]="['../../']"
+        matTooltip="Find more heroes"
+        [matTooltipPosition]="customTooltipPosition"
+      >
+        <mat-icon class="icon-r">autorenew</mat-icon>
+        <span>GET RANDOM HEROES</span>
+      </button>
+
+      <span class="spacer"></span>
+
+      <button
+        mat-button
+        color="accent"
+        (click)="goToPreviousHero()"
+        matTooltip="Show previous hero"
+        [matTooltipPosition]="customTooltipPosition"
+      >
+        <mat-icon class="icon-r">navigate_before</mat-icon>
+        <span>PREVIOUS</span>
+      </button>
+
+      <button
+        mat-button
+        color="accent"
+        (click)="goToNextHero()"
+        matTooltip="Show next hero"
+        [matTooltipPosition]="customTooltipPosition"
+      >
+        <span>NEXT</span>
+        <mat-icon class="icon-l">navigate_next</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div class="spinner" *ngIf="isLoading">
+  <mat-progress-spinner color="accent" mode="indeterminate" diameter="50">
+  </mat-progress-spinner>
+</div>

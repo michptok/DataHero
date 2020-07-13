@@ -1,0 +1,53 @@
+.mat-toolbar {
+  min-width: 560px;
+  .mat-toolbar-row {
+    justify-content: center;
+    .nav-home {
+      font-size: 20px;
+      width: 122px;
+    }
+    .spacer {
+      flex: 1 1 auto;
+    }
+    .search {
+      display: flex;
+      background-color: white;
+      border-radius: 4px;
+      align-items: center;
+      margin: 0 8px;
+
+      .mat-flat-button[disabled] {
+        background-color: white;
+      }
+
+      .mat-flat-button {
+        padding: 0;
+        min-width: 36px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      .input-text {
+        font-size: 14px;
+        caret-color: #3f51b5;
+        border-width: 0;
+        padding: 0 2px;
+        height: 32px;
+        border-radius: 0 4px 4px 0;
+        width: 220px;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::-webkit-search-cancel-button {
+          -webkit-appearance: none;
+        }
+      }
+    }
+    .nav-about {
+      font-size: 16px;
+      width: 122px;
+    }
+  }
+}

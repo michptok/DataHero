@@ -1,0 +1,59 @@
+<div class="wrapper">
+  <mat-card *ngIf="!isLoading" class="mat-elevation-z2">
+    <mat-card-header *ngIf="isQueryValid">
+      <mat-card-title
+        >Search results for: {{ searchResponse["results-for"] }}</mat-card-title
+      >
+      <mat-card-subtitle
+        >{{ searchResponse.results.length }} heroes found</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-header *ngIf="!isQueryValid">
+      <mat-card-title>{{ errorMessage }}</mat-card-title>
+      <mat-card-subtitle>Try searching heroes by their names</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content *ngIf="isQueryValid">
+      <mat-list>
+        <mat-list-item
+          *ngFor="let hero of searchResponse.results"
+          [routerLink]="['/hero', hero.id]"
+        >
+          <div class="avatar-container">
+            <img
+              class="avatar"
+              src="{{ hero.image.url }}"
+              default="../../assets/images/avatar.png"
+              alt="avatar"
+            />
+          </div>
+
+          <div mat-line>{{ hero.name }}</div>
+          <div mat-line class="mat-subline">ID: {{ hero.id }}</div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        matRippleDisabled="disabled"
+        mat-button
+        [routerLink]="['../../']"
+        matTooltip="Show more heroes"
+        [matTooltipPosition]="customTooltipPosition"
+      >
+        <mat-icon class="icon-r">autorenew</mat-icon>
+        <span>GET RANDOM HEROES</span>
+      </button>
+
+      <span class="spacer"></span>
+    </mat-card-actions>
+  </mat-card>
+
+  <div class="spinner" *ngIf="isLoading">
+    <mat-progress-spinner
+      color="accent"
+      mode="indeterminate"
+      diameter="50"
+    >
+    </mat-progress-spinner>
+  </div>
+</div>

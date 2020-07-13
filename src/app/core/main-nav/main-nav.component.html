@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button
+      mat-button
+      class="nav-home"
+      [routerLink]="['/']"
+    >
+      Data Hero
+    </button>
+
+    <span class="spacer"></span>
+
+    <form
+      [formGroup]="searchForm"
+      (ngSubmit)="onSubmit()"
+      class="search mat-elevation-z2"
+    >
+      <button
+        type="submit"
+        mat-flat-button
+        [disabled]="!searchForm.valid"
+        [routerLink]="['/about']"
+      >
+        <mat-icon color="primary">search</mat-icon>
+      </button>
+      <input
+        matInput
+        type="search"
+        [formControlName]="'searchedHeroName'"
+        class="input-text"
+        placeholder="Search heroes by name"
+      />
+    </form>
+
+    <span class="spacer"></span>
+
+    <button
+      class="nav-about"
+      mat-button
+      [routerLink]="['/about']"
+    >
+      ABOUT
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
